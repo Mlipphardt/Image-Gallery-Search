@@ -1,3 +1,5 @@
+const API_KEY = process.env.API_KEY;
+
 const $ = document.querySelector.bind(document);
 
 //Image search function
