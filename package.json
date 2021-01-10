@@ -1,0 +1,23 @@
+{
+  "name": "Image-Gallery-Search",
+  "version": "1.0.0",
+  "description": "Jamstack screening project for the position of front-end developer.",
+  "main": "secrets.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mlipphardt/Image-Gallery-Search.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mlipphardt/Image-Gallery-Search/issues"
+  },
+  "homepage": "https://github.com/Mlipphardt/Image-Gallery-Search#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
