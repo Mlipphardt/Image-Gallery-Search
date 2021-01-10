@@ -43,4 +43,5 @@ $("#search-btn").addEventListener("click", () => {
   let text = $("#search-input").value;
   getImages(text);
   $("#search-input").value = "";
+  $("#image-gallery-wrapper").innerHTML = "";
 });

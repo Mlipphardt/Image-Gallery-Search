@@ -31,6 +31,7 @@ body {
   position: sticky;
   top: 0px;
   white-space: nowrap;
+  z-index: 2;
 }
 
 .title-text {
@@ -76,6 +77,8 @@ body {
   height: auto;
   align-self: center;
   margin: 5px 0px 5px 0px;
+  animation: ease_up linear forwards;
+  animation-duration: 1s;
 }
 
 .flickr-img:hover {
@@ -86,6 +89,22 @@ body {
   display: flex;
   justify-content: start;
   width: 100%;
+}
+
+.ease_up {
+  color: black;
+}
+
+@keyframes ease_up {
+  0% {
+    opacity: 0;
+    /* transform: translateY(25%); */
+  }
+
+  100% {
+    /* transform: translateY(0); */
+    opacity: 1;
+  }
 }
 
 @media screen and (max-width: 900px) {
