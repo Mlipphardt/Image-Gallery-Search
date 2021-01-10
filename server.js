@@ -4,7 +4,7 @@ const fetch = require("node-fetch");
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-const API_KEY = process.env.API_KEY;
+const API_KEY = "1803ef1ef551074a2924ff9abc7ca7a5";
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
