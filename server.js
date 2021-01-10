@@ -1,8 +1,10 @@
-var express = require("express");
-var path = require("path");
+const express = require("express");
+const fetch = require("node-fetch");
 
-var app = express();
-var PORT = process.env.PORT || 8080;
+const app = express();
+const PORT = process.env.PORT || 8080;
+
+const API_KEY = process.env.API_KEY;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -13,6 +15,25 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+app.get("/api/search", async (req, res) => {
+  try {
+    text = req.query.text ? req.query.text : "cat";
+    const baseURL = `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${API_KEY}&format=json&nojsoncallback=1&safe_search=1`;
+    let url = `${baseURL}&text=${text}`;
+    let response = await fetch(url);
+    let data = await response.json();
+    let photos =
+      data.photos.photo.length > 20
+        ? data.photos.photo.slice(0, 20)
+        : data.photos.photo;
+    return res.json({
+      photos: photos,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 app.listen(PORT, function () {
-  console.log("Sever live and listening on PORT " + PORT + "!");
+  console.log("Server listening on " + PORT);
 });

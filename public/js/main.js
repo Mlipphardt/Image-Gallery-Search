@@ -1,19 +1,12 @@
-const API_KEY = process.env.API_KEY;
-
 const $ = document.querySelector.bind(document);
 
 //Image search function
 const getImages = async (text) => {
   try {
     text = text ? text : "cat";
-    const baseURL = `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${API_KEY}&format=json&nojsoncallback=1&safe_search=1`;
-    let url = `${baseURL}&text=${text}`;
-    let response = await fetch(url);
+    let response = await fetch(`/api/search?text=${text}`);
     let data = await response.json();
-    let photos =
-      data.photos.photo.length > 20
-        ? data.photos.photo.slice(0, 20)
-        : data.photos.photo;
+    let photos = data.photos;
     populateImages(photos);
   } catch (err) {
     console.warn(err);
