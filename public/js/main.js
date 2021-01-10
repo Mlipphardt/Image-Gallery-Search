@@ -31,10 +31,18 @@ const populateImages = (imageArray) => {
   }
 };
 
-//When search button clicked, trigger API get request.
-$("#search-btn").addEventListener("click", () => {
+const searchHandler = () => {
   let text = $("#search-input").value;
   getImages(text);
   $("#search-input").value = "";
   $("#image-gallery-wrapper").innerHTML = "";
+};
+
+//When search button clicked or enter pressed in search input, trigger API get request.
+$("#search-btn").addEventListener("click", searchHandler);
+
+$("#search-input").addEventListener("keyup", (event) => {
+  if (event.keyCode === 13) {
+    searchHandler();
+  }
 });
