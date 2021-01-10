@@ -24,9 +24,11 @@ const populateImages = (imageArray) => {
     const imgURL = "https://live.staticflickr.com/";
     imageArray.forEach((photo) => {
       let img = document.createElement("img");
-      let url = `${imgURL}${photo.server}/${photo.id}_${photo.secret}.jpg`;
+      let url = `${imgURL}${photo.server}/${photo.id}_${photo.secret}_b.jpg`;
       img.setAttribute("src", url);
       img.setAttribute("alt", photo.title ? photo.title : "Search result");
+      img.setAttribute("title", photo.title ? photo.title : "Search result");
+      img.classList.add("flickr-img");
       $("#image-gallery-wrapper").append(img);
     });
   } catch (err) {
@@ -38,4 +40,5 @@ const populateImages = (imageArray) => {
 $("#search-btn").addEventListener("click", () => {
   let text = $("#search-input").value;
   getImages(text);
+  $("#search-input").value = "";
 });
