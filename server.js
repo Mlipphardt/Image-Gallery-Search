@@ -4,7 +4,7 @@ const fetch = require("node-fetch");
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-const API_KEY = process.env.API_KEY;
+const API_KEY = "1803ef1ef551074a2924ff9abc7ca7a5";
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
 
 app.get("/api/search", async (req, res) => {
   try {
-    text = req.query.text ? req.query.text : "cat";
+    let text = req.query.text;
     const baseURL = `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${API_KEY}&format=json&nojsoncallback=1&safe_search=1`;
     let url = `${baseURL}&text=${text}`;
     let response = await fetch(url);
