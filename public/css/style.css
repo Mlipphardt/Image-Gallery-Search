@@ -1,0 +1,25 @@
+html,
+body {
+  padding: 0px;
+  margin: 0px;
+}
+
+.banner {
+  height: 100px;
+  color: #ffffff;
+  background-color: #00008b;
+  display: flex;
+  align-items: center;
+  padding: 5px 20px 5px 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+}
+
+#search-input {
+  height: 25px;
+  margin-left: 15px;
+}
+
+#search-btn {
+  margin-left: 10px;
+}
