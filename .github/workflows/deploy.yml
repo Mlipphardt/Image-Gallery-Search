@@ -27,5 +27,6 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: deploy
+        run: echo "Loading env var."
         env:
           API_KEY: ${{secrets.API_KEY}}
