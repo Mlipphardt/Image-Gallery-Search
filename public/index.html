@@ -13,6 +13,10 @@
     <link rel="shortcut icon" href="./favicon.png" type="image/x-icon" />
   </head>
   <body>
+    <div class="error-popup flex-col">
+      <span>Something has gone wrong! Please try your search again.</span>
+      <button class="btn" id="popup-btn">Close</button>
+    </div>
     <header class="banner">
       <h1 class="title-text">Image Gallery Search</h1>
       <div class="form-group">
@@ -22,10 +26,10 @@
           name="search"
           placeholder="Search"
         />
-        <button id="search-btn">Search</button>
+        <button id="search-btn" class="btn">Search</button>
       </div>
     </header>
-    <main id="image-gallery-wrapper"></main>
+    <main id="image-gallery-wrapper" class="flex-col"></main>
     <script src="./js/main.js" async defer></script>
   </body>
 </html>

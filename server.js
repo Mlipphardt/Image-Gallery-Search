@@ -31,6 +31,9 @@ app.get("/api/search", async (req, res) => {
     });
   } catch (err) {
     console.log(err);
+    res.json({
+      error: err,
+    });
   }
 });
 

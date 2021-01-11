@@ -3,12 +3,14 @@ const $ = document.querySelector.bind(document);
 //Image search function
 const getImages = async (text) => {
   try {
-    text = text ? text : "cat";
+    //if no text given, set default search to 'dog'
+    text = text ? text : "dog";
     let response = await fetch(`/api/search?text=${text}`);
     let data = await response.json();
     let photos = data.photos;
     populateImages(photos);
   } catch (err) {
+    popupSwitch();
     console.warn(err);
   }
 };
@@ -27,15 +29,31 @@ const populateImages = (imageArray) => {
       $("#image-gallery-wrapper").append(img);
     });
   } catch (err) {
+    popupSwitch();
     console.warn(err);
   }
 };
 
+//Handles search events, clears gallery and text input.
 const searchHandler = () => {
   let text = $("#search-input").value;
   getImages(text);
   $("#search-input").value = "";
   $("#image-gallery-wrapper").innerHTML = "";
+};
+
+//Contains error popup entrance/exit animation.
+const popupSwitch = () => {
+  let popup = $(".error-popup");
+  if (popup.classList.contains("ease_in")) {
+    popup.classList.remove("ease_in");
+    popup.classList.add("ease_out");
+  } else if (popup.classList.contains("ease_out")) {
+    popup.classList.remove("ease_out");
+    popup.classList.add("ease_in");
+  } else {
+    popup.classList.add("ease_in");
+  }
 };
 
 //When search button clicked or enter pressed in search input, trigger API get request.
@@ -46,3 +64,5 @@ $("#search-input").addEventListener("keyup", (event) => {
     searchHandler();
   }
 });
+
+$("#popup-btn").addEventListener("click", popupSwitch);
